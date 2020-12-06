@@ -57,7 +57,6 @@ print("Max id for part 1 is: {}".format(max_id))
 
 
 codes.sort()
-
 for i in range(36,945):
     if (not(i in codes)): print ("missing seat is : {}".format(i))
 
