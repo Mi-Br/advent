@@ -41,31 +41,33 @@ for line in inp:
 
 
 
+# # PART 1
+# visited = set()
+# def scan_bags(visited, bag_collection, srch):    
+#     if srch not in visited:
+#         print(srch)
+#         visited.add(srch)
+#         for bag in bag_collection:
+#             if(bag.can_hold_count(srch)):
+#                 scan_bags(visited, bag_collection, bag.color)
 
-contains_gold_bag = set()
-seen = []
-while len(seen) < len(bag_collection):
+# scan_bags(visited, bag_collection, 'shiny gold')
+# print("shiny gold can fit in {} bags".format(len(visited)-1))
+
+def count(name):
+    print("searching for: " + name)
     for bag in bag_collection:
-        if(bag.can_hold('shiny gold')):
-            contains_gold_bag.add(bag.color)
+        if bag.color == name:
+            i = 1
+            print("{} bag contains: ".format(name))
+            for k,v in bag.contents.items():
+                print("\t {} {} bag".format(v,k))
+                i = i + int(v) * count(k)
+            return i
+    return 0
 
-
-def get_bag_set(bag, collection):
-    seen = set()
-    found= set()
-    for b in collection:
-        if (b.can_hold_count(bag.color)):
-            found.add(bag)
-        seen.add(bag)
-
-    
-
-
-def scan_bags(bag, set):
-    seen = set()
-    
-
-
+print(count('shiny gold')-1)
+# print(count('dark red'))
 # print(bag_collection[0].can_hold('muted yellow'))
 # print(bag_collection[0].can_hold(bag_collection[3].color))
 
